@@ -5,11 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PearlsDesign"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="800">
+        Title="PearlDesignBoard" Height="800" Width="800" DataContext="{Binding Source=MainViewContext}">
     <Grid>
-        <Grid Name="TopMenu" VerticalAlignment="Top" Height="50" Background="LightGray"></Grid>
-        <Grid Name="PearlGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Beige" Margin="5, 55, 5, 5" >
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <StackPanel Name="TopMenu" Background="LightGray" Margin="10, 5" Grid.Row="0">
+            <Button Content="New" Margin="1" Width="40" Command="{Binding Btn_New_Clicked_Command}" />
+            <Button Content="Save" Margin="1" Width="40" Command="{Binding Btn_Save_Clicked_Command}" />
+        </StackPanel>
+        
+        <Grid Name="PearlGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Beige" Margin="5" Grid.Row="1" >
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="15" Width="15" Margin="1" Stroke="Black" VerticalAlignment="Top" />
         </Grid>
     </Grid>
