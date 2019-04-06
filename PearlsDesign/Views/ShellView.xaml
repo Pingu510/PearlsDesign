@@ -29,23 +29,26 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <Button x:Name="OpenSettingsPage">Settings</Button>
+            <Button x:Name="GenerateNewGrid">Generate new Grid</Button>
+        </StackPanel>
         <ContentControl Name="content" Content="{Binding PearlGrid}" Grid.Row="2" Grid.Column="2" >
             <ContentControl.ContentTemplate>
                 <DataTemplate>
                     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                         <ItemsControl Name="itemC" ItemsSource="{Binding Pearls}"  Width="{Binding GridSize}" Height="{Binding GridSize}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Rectangle Fill="{Binding Color}" Height="20" Width="20" Stroke="Black" StrokeThickness="0.25" />
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Rectangle Fill="{Binding Color}" Height="20" Width="20" Stroke="Black" StrokeThickness="0.25" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
                     </ScrollViewer>
                 </DataTemplate>
             </ContentControl.ContentTemplate>

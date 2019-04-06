@@ -5,23 +5,26 @@ namespace PearlsDesign.Models
 {
     internal class PearlGrid
     {
-        private Brush defaultColor = Brushes.Red;
-
         public List<Pearl> Pearls { get; set; }
         public int PearlItemsAccrossGrid { get; private set; }
         public double GridSize { get; private set; }
         public double PearlBeadSize { get; private set; }
-        public Brush DefaultColor { get => defaultColor; set => defaultColor = value; }
+        public SolidColorBrush DefaultColor { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="pearlOnewayItemCount"></param>
-        /// <param name="pearlBeadSize"></param>
-        public PearlGrid(int pearlOnewayItemCount, int pearlBeadSize)
+        public PearlGrid()
         {
-            PearlItemsAccrossGrid = pearlOnewayItemCount;
-            PearlBeadSize = pearlBeadSize;
+            PearlItemsAccrossGrid = Properties.Settings.Default.GridSize;
+            PearlBeadSize = Properties.Settings.Default.PearlSize;
+            Color color = Color.FromArgb(
+                Properties.Settings.Default.PearlBackgroundColor.A,
+                Properties.Settings.Default.PearlBackgroundColor.R,
+                Properties.Settings.Default.PearlBackgroundColor.G,
+                Properties.Settings.Default.PearlBackgroundColor.B
+            );
+            DefaultColor = new SolidColorBrush(color);
             GridSize = PearlBeadSize * PearlItemsAccrossGrid;
             GeneratePearlList();
         }
@@ -35,7 +38,7 @@ namespace PearlsDesign.Models
             var items = System.Math.Pow(PearlItemsAccrossGrid, 2);
             for (int i = 0; i < items; i++)
             {
-                pearls.Add(new Pearl(i, defaultColor));
+                pearls.Add(new Pearl(i, DefaultColor));
             }
             Pearls = pearls;
         }
