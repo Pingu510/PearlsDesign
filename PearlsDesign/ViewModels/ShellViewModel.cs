@@ -3,8 +3,9 @@ using PearlsDesign.Models;
 
 namespace PearlsDesign.ViewModels
 {
-    internal class ShellViewModel : Screen
+    internal class ShellViewModel : Conductor<object>
     {
+        private IWindowManager manager = new WindowManager();
         private PearlGrid _pearlGrid;
 
         public PearlGrid PearlGrid
@@ -17,10 +18,23 @@ namespace PearlsDesign.ViewModels
             }
         }
 
+        /// <summary>
+        /// Constructor
+        /// Generates basic PearlGrid
+        /// </summary>
         public ShellViewModel()
         {
-            PearlGrid = new PearlGrid(Properties.Settings.Default.GridSize, Properties.Settings.Default.PearlSize);
+            GenerateNewGrid();
+        }
 
+        public void GenerateNewGrid()
+        {
+            PearlGrid = new PearlGrid();
+        }
+
+        public void OpenSettingsPage()
+        {
+            manager.ShowDialog(new SettingsViewModel(), null, null);
         }
     }
 }

@@ -8,14 +8,14 @@
     <Setting Name="PearlSize" Type="System.Double" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
-    <Setting Name="PearlDefaultColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">White</Value>
+    <Setting Name="PearlBackgroundColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">PeachPuff</Value>
     </Setting>
     <Setting Name="ApplicationWidth" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">450</Value>
+      <Value Profile="(Default)">200</Value>
     </Setting>
     <Setting Name="ApplicationHeight" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">800</Value>
+      <Value Profile="(Default)">200</Value>
     </Setting>
   </Settings>
 </SettingsFile>

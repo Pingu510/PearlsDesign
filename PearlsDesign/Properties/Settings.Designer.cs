@@ -49,19 +49,19 @@ namespace PearlsDesign.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("White")]
-        public global::System.Drawing.Color PearlDefaultColor {
+        [global::System.Configuration.DefaultSettingValueAttribute("PeachPuff")]
+        public global::System.Drawing.Color PearlBackgroundColor {
             get {
-                return ((global::System.Drawing.Color)(this["PearlDefaultColor"]));
+                return ((global::System.Drawing.Color)(this["PearlBackgroundColor"]));
             }
             set {
-                this["PearlDefaultColor"] = value;
+                this["PearlBackgroundColor"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("450")]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
         public double ApplicationWidth {
             get {
                 return ((double)(this["ApplicationWidth"]));
@@ -73,7 +73,7 @@ namespace PearlsDesign.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("800")]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
         public double ApplicationHeight {
             get {
                 return ((double)(this["ApplicationHeight"]));

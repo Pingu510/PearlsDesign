@@ -4,7 +4,7 @@ namespace PearlsDesign.Models
 {
     class Pearl
     {
-        public Pearl(int id, Brush color)
+        public Pearl(int id, SolidColorBrush color)
         {
             Id = id;
             Color = color;
@@ -12,7 +12,7 @@ namespace PearlsDesign.Models
         }
 
         public int Id { get; set; }
-        public Brush Color { get; set; }
+        public SolidColorBrush Color { get; set; }
         public string Test { get; set; }
     }
 }
