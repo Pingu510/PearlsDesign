@@ -8,19 +8,21 @@ namespace PearlsDesign.Models
         private Brush defaultColor = Brushes.Red;
 
         public List<Pearl> Pearls { get; set; }
-        public int PearlGridSize { get; private set; }
+        public int PearlItemsAccrossGrid { get; private set; }
+        public double GridSize { get; private set; }
         public double PearlBeadSize { get; private set; }
         public Brush DefaultColor { get => defaultColor; set => defaultColor = value; }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="gridSize"></param>
+        /// <param name="pearlOnewayItemCount"></param>
         /// <param name="pearlBeadSize"></param>
-        public PearlGrid(int gridSize, double pearlBeadSize)
+        public PearlGrid(int pearlOnewayItemCount, int pearlBeadSize)
         {
-            PearlGridSize = gridSize;
+            PearlItemsAccrossGrid = pearlOnewayItemCount;
             PearlBeadSize = pearlBeadSize;
+            GridSize = PearlBeadSize * PearlItemsAccrossGrid;
             GeneratePearlList();
         }
 
@@ -30,8 +32,8 @@ namespace PearlsDesign.Models
         public void GeneratePearlList()
         {
             var pearls = new List<Pearl>();
-            var times = System.Math.Pow(PearlGridSize, 2);
-            for (int i = 0; i < times; i++)
+            var items = System.Math.Pow(PearlItemsAccrossGrid, 2);
+            for (int i = 0; i < items; i++)
             {
                 pearls.Add(new Pearl(i, defaultColor));
             }

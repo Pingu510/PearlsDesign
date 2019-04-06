@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PearlsDesign.Views"
         mc:Ignorable="d" 
-        FontSize="18"
-        Title="PearlDesign" Height="450" Width="800">
+        Title="PearlDesign"
+        MinHeight="200" MinWidth="400"
+        Height="450" Width="800">
     <Window.Resources>
         <DataTemplate x:Key="PearlTemplate">
             <Rectangle Fill="{Binding Pearls.Color}" Height="20" Width="20" />
         </DataTemplate>
     </Window.Resources>
-
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -29,34 +29,26 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-        <TextBlock x:Name="FirstName" Grid.Row="0" Grid.Column="0"></TextBlock>
 
-        <!--<ContentControl Content="{Binding PearlGrid}" Grid.Row="2" Grid.Column="2">
+        <ContentControl Name="content" Content="{Binding PearlGrid}" Grid.Row="2" Grid.Column="2" >
             <ContentControl.ContentTemplate>
                 <DataTemplate>
-                    <WrapPanel>
-                        <Rectangle Fill="{Binding Pearls[0].Color}" Height="{Binding PearlBeadSize}" Width="{Binding PearlBeadSize}" />
-                    </WrapPanel>
-                </DataTemplate>
-            </ContentControl.ContentTemplate>
-        </ContentControl>-->
-        <!--ContentTemplate="{StaticResource PearlTemplate}"-->
-        
-        
-        <!--<ContentControl Content="{Binding PearlGrid}" Grid.Row="2" Grid.Column="2">
-            <ContentControl.ContentTemplate>
-                <DataTemplate>-->
-                    <ItemsControl ItemsSource="{Binding Pearls}" Background="Beige" Grid.Row="2" Grid.Column="2">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                        <ItemsControl Name="itemC" ItemsSource="{Binding Pearls}"  Width="{Binding GridSize}" Height="{Binding GridSize}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <!--<WrapPanel>-->
-                                <Rectangle Fill="{Binding Color}" Height="20" Width="20" />
-                                <!--</WrapPanel>-->
+                                <Rectangle Fill="{Binding Color}" Height="20" Width="20" Stroke="Black" StrokeThickness="0.25" />
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                <!--</DataTemplate>
+                    </ScrollViewer>
+                </DataTemplate>
             </ContentControl.ContentTemplate>
-        </ContentControl>-->
+        </ContentControl>
     </Grid>
 </Window>
