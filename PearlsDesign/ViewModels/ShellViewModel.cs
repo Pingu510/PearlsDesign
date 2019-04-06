@@ -19,7 +19,8 @@ namespace PearlsDesign.ViewModels
 
         public ShellViewModel()
         {
-            PearlGrid = new PearlGrid(50, 20);
+            PearlGrid = new PearlGrid(Properties.Settings.Default.GridSize, Properties.Settings.Default.PearlSize);
+
         }
     }
 }

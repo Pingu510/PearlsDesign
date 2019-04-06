@@ -18,7 +18,7 @@ namespace PearlsDesign.Models
         /// </summary>
         /// <param name="pearlOnewayItemCount"></param>
         /// <param name="pearlBeadSize"></param>
-        public PearlGrid(int pearlOnewayItemCount, int pearlBeadSize)
+        public PearlGrid(int pearlOnewayItemCount, double pearlBeadSize)
         {
             PearlItemsAccrossGrid = pearlOnewayItemCount;
             PearlBeadSize = pearlBeadSize;
