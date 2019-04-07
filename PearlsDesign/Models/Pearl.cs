@@ -1,16 +1,39 @@
-﻿using System.Windows.Media;
+﻿using System.ComponentModel;
+using System.Windows.Media;
 
 namespace PearlsDesign.Models
 {
-    class Pearl
+    internal class Pearl : INotifyPropertyChanged
     {
-        public Pearl(int id, SolidColorBrush color)
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private SolidColorBrush _fillColor;
+        
+        public int Id { get; set; }
+        public SolidColorBrush FillColor
+        {
+            get => _fillColor;
+            set
+            {
+                _fillColor = value;
+                OnPropertyChanged("FillColor");
+            }
+        }
+        
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="fillColor"></param>
+        public Pearl(int id, SolidColorBrush fillColor)
         {
             Id = id;
-            Color = color;
+            FillColor = fillColor;
         }
-
-        public int Id { get; set; }
-        public SolidColorBrush Color { get; set; }
+                
+        public void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

@@ -32,7 +32,8 @@
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="0">
-            <Button x:Name="ColorOne" Background="{Binding ColorOne}">1</Button>
+            <Button Background="{Binding ColorOne}">Left</Button>
+            <Button Background="{Binding ColorTwo}">Right</Button>
             <Button x:Name="OpenSettingsPage">Settings</Button>
             <Button x:Name="GenerateNewGrid">Generate new Grid</Button>
         </StackPanel>
@@ -52,10 +53,11 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Uid="{Binding Id}" cal:Message.Attach="[Event Click] = [Action Pearl_Click($source)]" 
+                                    <Button Uid="{Binding Id}" 
+                                            cal:Message.Attach="[Event PreviewMouseLeftButtonDown] = [Action Pearl_LeftClick($source)]; [Event PreviewMouseRightButtonDown] = [Action Pearl_RightClick($source)]"
                                             Height="{Binding Data.PearlBeadSize, Source={StaticResource proxy}}" 
                                             Width="{Binding Data.PearlBeadSize, Source={StaticResource proxy}}" 
-                                            Background="{Binding Color}" BorderBrush="Black" BorderThickness="0.25">
+                                            Background="{Binding FillColor}" BorderBrush="Black" BorderThickness="0.25">
                                         <!--<Button.Template>
                                             <ControlTemplate>
                                                 <Rectangle Fill="{Binding Color}" Height="{Binding Data.PearlBeadSize, Source={StaticResource proxy}}" Width="{Binding Data.PearlBeadSize, Source={StaticResource proxy}}" Stroke="Black" StrokeThickness="0.25" />
