@@ -5,22 +5,28 @@ namespace PearlsDesign.Models
 {
     internal class PearlGrid
     {
-        private Color defaultColor = Colors.White;
-
-        public List<Pearl> Pearls;
-        public int PearlGridSize { get; private set; }
+        public List<Pearl> Pearls { get; set; }
+        public int PearlItemsAccrossGrid { get; private set; }
+        public double GridSize { get; private set; }
         public double PearlBeadSize { get; private set; }
-        public Color DefaultColor { get => defaultColor; set => defaultColor = value; }
+        public SolidColorBrush DefaultColor { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="size"></param>
-        /// <param name="pearlBeadSize"></param>
-        public PearlGrid(int size, double pearlBeadSize)
+        public PearlGrid()
         {
-            PearlGridSize = size;
-            PearlBeadSize = pearlBeadSize;
+            PearlItemsAccrossGrid = Properties.Settings.Default.GridSize;
+            PearlBeadSize = Properties.Settings.Default.PearlSize;
+            Color color = Color.FromArgb(
+                Properties.Settings.Default.PearlBackgroundColor.A,
+                Properties.Settings.Default.PearlBackgroundColor.R,
+                Properties.Settings.Default.PearlBackgroundColor.G,
+                Properties.Settings.Default.PearlBackgroundColor.B
+            );
+            DefaultColor = new SolidColorBrush(color);
+            GridSize = PearlBeadSize * PearlItemsAccrossGrid;
+            GeneratePearlList();
         }
 
         /// <summary>
@@ -29,10 +35,10 @@ namespace PearlsDesign.Models
         public void GeneratePearlList()
         {
             var pearls = new List<Pearl>();
-            var times = PearlGridSize ^ 2;
-            for (int i = 0; i < times; i++)
+            var items = System.Math.Pow(PearlItemsAccrossGrid, 2);
+            for (int i = 0; i < items; i++)
             {
-                pearls.Add(new Pearl(i, defaultColor));
+                pearls.Add(new Pearl(i, DefaultColor));
             }
             Pearls = pearls;
         }
