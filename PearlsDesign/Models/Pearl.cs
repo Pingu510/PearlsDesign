@@ -8,11 +8,9 @@ namespace PearlsDesign.Models
         {
             Id = id;
             Color = color;
-            Test = "Test";
         }
 
         public int Id { get; set; }
         public SolidColorBrush Color { get; set; }
-        public string Test { get; set; }
     }
 }

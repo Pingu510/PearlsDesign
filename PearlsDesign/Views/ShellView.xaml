@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cal="http://www.caliburnproject.org"
         xmlns:local="clr-namespace:PearlsDesign.Views"
         xmlns:base="clr-namespace:PearlsDesign"
         mc:Ignorable="d" 
@@ -31,6 +32,7 @@
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="0">
+            <Button x:Name="ColorOne" Background="{Binding ColorOne}">1</Button>
             <Button x:Name="OpenSettingsPage">Settings</Button>
             <Button x:Name="GenerateNewGrid">Generate new Grid</Button>
         </StackPanel>
@@ -41,7 +43,7 @@
                     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                         <ItemsControl Name="itemC" ItemsSource="{Binding Pearls}"  Width="{Binding GridSize}" Height="{Binding GridSize}">
                             <ItemsControl.Resources>
-                                <base:BindingProxy x:Key="proxy" Data="{Binding}" />                                
+                                <base:BindingProxy x:Key="proxy" Data="{Binding}" />
                             </ItemsControl.Resources>
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -50,7 +52,16 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Rectangle Fill="{Binding Color}" Height="{Binding Data.PearlBeadSize, Source={StaticResource proxy}}" Width="{Binding Data.PearlBeadSize, Source={StaticResource proxy}}" Stroke="Black" StrokeThickness="0.25" />
+                                    <Button Uid="{Binding Id}" cal:Message.Attach="[Event Click] = [Action Pearl_Click($source)]" 
+                                            Height="{Binding Data.PearlBeadSize, Source={StaticResource proxy}}" 
+                                            Width="{Binding Data.PearlBeadSize, Source={StaticResource proxy}}" 
+                                            Background="{Binding Color}" BorderBrush="Black" BorderThickness="0.25">
+                                        <!--<Button.Template>
+                                            <ControlTemplate>
+                                                <Rectangle Fill="{Binding Color}" Height="{Binding Data.PearlBeadSize, Source={StaticResource proxy}}" Width="{Binding Data.PearlBeadSize, Source={StaticResource proxy}}" Stroke="Black" StrokeThickness="0.25" />
+                                            </ControlTemplate>
+                                        </Button.Template>-->
+                                    </Button>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
