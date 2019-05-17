@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PearlsDesign.Views"
         mc:Ignorable="d"
         Title="SettingsView" 
-        Height="{Binding ApplicationHeight}" Width="{Binding ApplicationWidth}"
+        Height="220" Width="340"
         Background="PeachPuff" ResizeMode="NoResize">
 
     <Grid Margin="10">
@@ -20,19 +20,23 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <!--Row 0-->
-        <Label Content="Gridsize:" Grid.Row="0" />
-        <TextBox Text="{Binding GridSize}" Grid.Row="0" Grid.Column="1" />
+        <Label Content="Gridsize - Height:" Grid.Row="0" />
+        <TextBox Text="{Binding GridHeightSize}" Grid.Row="0" Grid.Column="1" />
         <!--Row 1-->
-        <Label Content="Pearlsize:" Grid.Row="1" />
-        <TextBox Text="{Binding PearlSize}" Grid.Row="1" Grid.Column="1" />
+        <Label Content="Gridsize - Width:" Grid.Row="1" />
+        <TextBox Text="{Binding GridWidthSize}" Grid.Row="1" Grid.Column="1" />
         <!--Row 2-->
-        <Label Content="Background Color:" Grid.Row="2" />
-        <TextBox Text="{Binding PearlBackgroundColor}" Grid.Row="2" Grid.Column="1" />
-        <!--Row 4-->
-        <Button x:Name="SaveSettings" Content="Save Settings" Grid.Row="4" Grid.Column="3"/>
+        <Label Content="Pearlsize:" Grid.Row="2" />
+        <TextBox Text="{Binding PearlSize}" Grid.Row="2" Grid.Column="1" />
+        <!--Row 3-->
+        <Label Content="Background Color:" Grid.Row="3" />
+        <TextBox Text="{Binding PearlBackgroundColor}" Grid.Row="3" Grid.Column="1" />
+        <!--Row 5-->
+        <Button x:Name="SaveSettings" Content="Save Settings" Grid.Row="5" Grid.Column="3"/>
     </Grid>
 </Window>
