@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xceedtk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:cal="http://www.caliburnproject.org"
         xmlns:local="clr-namespace:PearlsDesign.Views"
         xmlns:base="clr-namespace:PearlsDesign"
@@ -32,11 +33,14 @@
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="0">
-            <Button Background="{Binding ColorOne}">Left</Button>
-            <Button Background="{Binding ColorTwo}">Right</Button>
+            <Label Background="{Binding ColorOne}">Left</Label>
+            <xceedtk:ColorPicker Name="ClrPcker_Left" DisplayColorAndName="True" cal:Message.Attach="[Event SelectedColorChanged] = [Action ClrPcker_SelectedColorChanged($source, $eventArgs, 'ColorOne')]"></xceedtk:ColorPicker>
+            <Label Background="{Binding ColorTwo}">Right</Label>
+            <xceedtk:ColorPicker Name="ClrPcker_Right" DisplayColorAndName="True" cal:Message.Attach="[Event SelectedColorChanged] = [Action ClrPcker_SelectedColorChanged($source, $eventArgs, 'ColorTwo')]"></xceedtk:ColorPicker>
             <Button x:Name="OpenSettingsPage">Settings</Button>
             <Button x:Name="GenerateNewGrid">Generate new Grid</Button>
         </StackPanel>
+
         <ContentControl Name="content" Content="{Binding PearlGrid}" Grid.Row="2" Grid.Column="2" >
             <ContentControl.ContentTemplate>
                 <DataTemplate>
