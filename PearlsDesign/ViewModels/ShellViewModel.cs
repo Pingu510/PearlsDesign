@@ -1,7 +1,9 @@
 ﻿using Caliburn.Micro;
 using PearlsDesign.Models;
 using System;
+using System.Windows;
 using System.Windows.Media;
+using Xceed.Wpf.Toolkit;
 
 namespace PearlsDesign.ViewModels
 {
@@ -63,6 +65,27 @@ namespace PearlsDesign.ViewModels
         public void OpenSettingsPage()
         {
             manager.ShowDialog(new SettingsViewModel(), null, null);
+        }
+
+        /// <summary>
+        /// Change the color for the selected property
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="propToChange"></param>
+        public void ClrPcker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e, string propToChange)
+        {
+            switch (propToChange)
+            {
+                case "ColorOne":
+                    ColorOne.Color = e.NewValue.Value;
+                    break;
+                case "ColorTwo":
+                    ColorTwo.Color = e.NewValue.Value;
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>
