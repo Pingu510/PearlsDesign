@@ -67,6 +67,12 @@ namespace PearlsDesign.ViewModels
             manager.ShowDialog(new SettingsViewModel(), null, null);
         }
 
+        /// <summary>
+        /// Change the color for the selected property
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="propToChange"></param>
         public void ClrPcker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e, string propToChange)
         {
             switch (propToChange)
