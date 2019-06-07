@@ -28,7 +28,7 @@ namespace PearlsDesign.ViewModels
             get { return _colorOne; }
             set {
                 _colorOne = value;
-                NotifyOfPropertyChange(() => ColorOne);
+                //NotifyOfPropertyChange(() => ColorOne);
             }
         }
         public SolidColorBrush ColorTwo
@@ -36,7 +36,7 @@ namespace PearlsDesign.ViewModels
             get { return _colorTwo; }
             set {
                 _colorTwo = value;
-                NotifyOfPropertyChange(() => ColorTwo);
+                //NotifyOfPropertyChange(() => ColorTwo);
             }
         }
 
@@ -96,7 +96,7 @@ namespace PearlsDesign.ViewModels
         {
             Int32.TryParse(button.Uid, out int id);
             var pearl = PearlGrid.Pearls.Find(x => x.Id == id);
-            pearl.FillColor = ColorOne;
+            pearl.FillColor = ColorOne.Clone();
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace PearlsDesign.ViewModels
         {
             Int32.TryParse(button.Uid, out int id);
             var pearl = PearlGrid.Pearls.Find(x => x.Id == id);
-            pearl.FillColor = ColorTwo;
+            pearl.FillColor = ColorTwo.Clone();
         }
     }
 }
