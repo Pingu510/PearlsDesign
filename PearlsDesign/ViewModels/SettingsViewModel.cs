@@ -12,6 +12,7 @@ namespace PearlsDesign.ViewModels
         private double _applicationHeight;
         private SolidColorBrush _gridBackgroundColor;
 
+
         public int GridHeightSize
         {
             get { return _gridHeightSize; }
