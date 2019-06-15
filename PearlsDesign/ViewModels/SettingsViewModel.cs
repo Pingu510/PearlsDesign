@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using System.Windows;
 using System.Windows.Media;
 
 namespace PearlsDesign.ViewModels
@@ -11,6 +12,8 @@ namespace PearlsDesign.ViewModels
         private double _applicationWidth;
         private double _applicationHeight;
         private SolidColorBrush _gridBackgroundColor;
+        private SolidColorBrush _inputPearlColor;
+
 
         public int GridHeightSize
         {
@@ -97,13 +100,16 @@ namespace PearlsDesign.ViewModels
         /// </summary>
         public void SaveSettings()
         {
-            System.Drawing.Color color = System.Drawing.Color.FromArgb(
-                GridBackgroundColor.Color.A,
-                GridBackgroundColor.Color.R,
-                GridBackgroundColor.Color.G,
-                GridBackgroundColor.Color.B
-            );
-            Properties.Settings.Default.PearlBackgroundColor = color;
+            if (_inputPearlColor != null)
+            {
+                var tmpC = System.Drawing.Color.FromArgb(
+                    _inputPearlColor.Color.A,
+                    _inputPearlColor.Color.R,
+                    _inputPearlColor.Color.G,
+                    _inputPearlColor.Color.B
+                );
+                Properties.Settings.Default.PearlBackgroundColor = tmpC;
+            }
             Properties.Settings.Default.GridHeightSize = GridHeightSize;
             Properties.Settings.Default.GridWidthSize = GridWidthSize;
             Properties.Settings.Default.PearlSize = PearlSize;
@@ -112,6 +118,17 @@ namespace PearlsDesign.ViewModels
 
             Properties.Settings.Default.Save();
             TryClose();
+        }
+
+        /// <summary>
+        /// Saves the set BackgroundPearlColor as a temporary value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void NewPearlColor(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+        {
+            _inputPearlColor = new SolidColorBrush();
+            _inputPearlColor.Color = e.NewValue.Value;
         }
     }
 }
