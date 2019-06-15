@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:xceedtk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cal="http://www.caliburnproject.org"
         xmlns:local="clr-namespace:PearlsDesign.Views"
         mc:Ignorable="d"
         Title="SettingsView" 
@@ -38,10 +39,10 @@
             <TextBox Text="{Binding GridHeightSize}" />
             <TextBox Text="{Binding GridWidthSize}" />
             <TextBox Text="{Binding PearlSize}" />
-            <TextBox Text="{Binding GridBackgroundColor}" />
-            <!--<xceedtk:ColorPicker Name="ClrPcker_Left" Margin="5" DisplayColorAndName="True" 
-                                 cal:Message.Attach="[Event SelectedColorChanged] = [Action ClrPcker_SelectedColorChanged($source, $eventArgs, 'ColorOne')]">-->                
-            <!--</xceedtk:ColorPicker>-->
+            <!--<TextBox Text="{Binding GridBackgroundColor}" />-->
+            <xceedtk:ColorPicker Name="PearlColor" Margin="5" DisplayColorAndName="True"
+                cal:Message.Attach="[Event SelectedColorChanged] = [Action NewPearlColor($source, $eventArgs)]">
+            </xceedtk:ColorPicker>
         </StackPanel>        
         <Button x:Name="SaveSettings" Content="Save Settings" Margin="5" Padding="4" Grid.Row="2" Grid.Column="2"/>
     </Grid>
