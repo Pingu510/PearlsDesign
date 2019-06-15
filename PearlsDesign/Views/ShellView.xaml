@@ -3,12 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xceedtk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:cal="http://www.caliburnproject.org"
         xmlns:local="clr-namespace:PearlsDesign.Views"
         xmlns:base="clr-namespace:PearlsDesign"
         mc:Ignorable="d" 
         Title="PearlDesign"
         MinHeight="200" MinWidth="400"
+        Background="#5c5c3d"
         Height="450" Width="800">
     <Window.Resources>
         <DataTemplate x:Key="PearlTemplate">
@@ -22,27 +24,36 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="10" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
+            <RowDefinition Height="10" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
-            <RowDefinition Height="20" />
+            <RowDefinition Height="10" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="1" Grid.Column="0">
-            <Button Background="{Binding ColorOne}">Left</Button>
-            <Button Background="{Binding ColorTwo}">Right</Button>
-            <Button x:Name="OpenSettingsPage">Settings</Button>
-            <Button x:Name="GenerateNewGrid">Generate new Grid</Button>
+        <StackPanel Grid.Row="1" Grid.Column="0" Background="#8a8a5c">
+            <StackPanel Background="#a3a375" Margin="4">
+                <Label Background="{Binding ColorOne}" Margin="5">Left</Label>
+                <xceedtk:ColorPicker Name="ClrPcker_Left" Margin="5" DisplayColorAndName="True" cal:Message.Attach="[Event SelectedColorChanged] = [Action ClrPcker_SelectedColorChanged($source, $eventArgs, 'ColorOne')]"></xceedtk:ColorPicker>
+            </StackPanel>
+            <StackPanel Background="#a3a375" Margin="4">
+                <Label Background="{Binding ColorTwo}" Margin="5">Right</Label>
+                <xceedtk:ColorPicker Name="ClrPcker_Right" Margin="5" DisplayColorAndName="True" cal:Message.Attach="[Event SelectedColorChanged] = [Action ClrPcker_SelectedColorChanged($source, $eventArgs, 'ColorTwo')]"></xceedtk:ColorPicker>
+            </StackPanel>
+            <Button x:Name="OpenSettingsPage" Margin="5">Settings</Button>
+            <Button x:Name="GenerateNewGrid" Margin="5">
+                <TextBlock Text="Generate new Grid" TextWrapping="Wrap" TextAlignment="Center" />
+            </Button>
         </StackPanel>
-        <ContentControl Name="content" Content="{Binding PearlGrid}" Grid.Row="2" Grid.Column="2" >
+
+        <ContentControl Name="content" Content="{Binding PearlGrid}" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" >
             <ContentControl.ContentTemplate>
                 <DataTemplate>
                     <!--Scrollabillity-->
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                        <ItemsControl Name="itemC" ItemsSource="{Binding Pearls}"  Width="{Binding GridSize}" Height="{Binding GridSize}">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Background="#4d4d33">
+                        <ItemsControl Name="itemC" ItemsSource="{Binding Pearls}" Background="#3d3d29" Width="{Binding TotalGridWidth}" Height="{Binding TotalGridHeight}">
                             <ItemsControl.Resources>
                                 <base:BindingProxy x:Key="proxy" Data="{Binding}" />
                             </ItemsControl.Resources>

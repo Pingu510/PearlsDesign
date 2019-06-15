@@ -12,7 +12,7 @@ namespace PearlsDesign.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,12 +26,12 @@ namespace PearlsDesign.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public int GridSize {
+        public int GridWidthSize {
             get {
-                return ((int)(this["GridSize"]));
+                return ((int)(this["GridWidthSize"]));
             }
             set {
-                this["GridSize"] = value;
+                this["GridWidthSize"] = value;
             }
         }
         
@@ -80,6 +80,18 @@ namespace PearlsDesign.Properties {
             }
             set {
                 this["ApplicationHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int GridHeightSize {
+            get {
+                return ((int)(this["GridHeightSize"]));
+            }
+            set {
+                this["GridHeightSize"] = value;
             }
         }
     }

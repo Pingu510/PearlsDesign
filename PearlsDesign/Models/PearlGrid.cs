@@ -6,17 +6,41 @@ namespace PearlsDesign.Models
     internal class PearlGrid
     {
         public List<Pearl> Pearls { get; set; }
-        public int PearlItemsAccrossGrid { get; private set; }
-        public double GridSize { get; private set; }
-        public double PearlBeadSize { get; private set; }
         public SolidColorBrush DefaultColor { get; private set; }
 
         /// <summary>
-        /// Constructor
+        /// Items/pearls Vertically
+        /// </summary>
+        public int ItemsAccrossGridHeight { get; private set; }
+
+        /// <summary>
+        /// Items/pearls Horizontaly
+        /// </summary>
+        public int ItemsAccrossGridWidth { get; private set; }
+
+        /// <summary>
+        /// The size of the pearls (square)
+        /// </summary>
+        public double PearlBeadSize { get; private set; }
+
+        /// <summary>
+        /// The acctual height (size) of the grid
+        /// </summary>
+        public double TotalGridHeight { get; private set; }
+
+        /// <summary>
+        /// The acctual width (size) of the grid
+        /// </summary>
+        public double TotalGridWidth { get; private set; }
+
+        /// <summary>
+        /// Constructor, Fetches all settings from Settings.settings
         /// </summary>
         public PearlGrid()
         {
-            PearlItemsAccrossGrid = Properties.Settings.Default.GridSize;
+            ItemsAccrossGridHeight = Properties.Settings.Default.GridHeightSize;
+            ItemsAccrossGridWidth = Properties.Settings.Default.GridWidthSize;
+
             PearlBeadSize = Properties.Settings.Default.PearlSize;
             Color color = Color.FromArgb(
                 Properties.Settings.Default.PearlBackgroundColor.A,
@@ -25,7 +49,8 @@ namespace PearlsDesign.Models
                 Properties.Settings.Default.PearlBackgroundColor.B
             );
             DefaultColor = new SolidColorBrush(color);
-            GridSize = PearlBeadSize * PearlItemsAccrossGrid;
+            TotalGridHeight = PearlBeadSize * ItemsAccrossGridHeight;
+            TotalGridWidth = PearlBeadSize * ItemsAccrossGridWidth;
             GeneratePearlList();
         }
 
@@ -35,7 +60,7 @@ namespace PearlsDesign.Models
         public void GeneratePearlList()
         {
             var pearls = new List<Pearl>();
-            var items = System.Math.Pow(PearlItemsAccrossGrid, 2);
+            var items = (ItemsAccrossGridHeight * ItemsAccrossGridWidth);
             for (int i = 0; i < items; i++)
             {
                 pearls.Add(new Pearl(i, DefaultColor));

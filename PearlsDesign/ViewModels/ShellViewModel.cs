@@ -1,7 +1,9 @@
 ﻿using Caliburn.Micro;
 using PearlsDesign.Models;
 using System;
+using System.Windows;
 using System.Windows.Media;
+using Xceed.Wpf.Toolkit;
 
 namespace PearlsDesign.ViewModels
 {
@@ -26,7 +28,7 @@ namespace PearlsDesign.ViewModels
             get { return _colorOne; }
             set {
                 _colorOne = value;
-                NotifyOfPropertyChange(() => ColorOne);
+                //NotifyOfPropertyChange(() => ColorOne);
             }
         }
         public SolidColorBrush ColorTwo
@@ -34,7 +36,7 @@ namespace PearlsDesign.ViewModels
             get { return _colorTwo; }
             set {
                 _colorTwo = value;
-                NotifyOfPropertyChange(() => ColorTwo);
+                //NotifyOfPropertyChange(() => ColorTwo);
             }
         }
 
@@ -66,6 +68,27 @@ namespace PearlsDesign.ViewModels
         }
 
         /// <summary>
+        /// Change the color for the selected property
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="propToChange"></param>
+        public void ClrPcker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e, string propToChange)
+        {
+            switch (propToChange)
+            {
+                case "ColorOne":
+                    ColorOne.Color = e.NewValue.Value;
+                    break;
+                case "ColorTwo":
+                    ColorTwo.Color = e.NewValue.Value;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
         /// LeftMouseDownEvent on Pearl(button)
         /// </summary>
         /// <param name="button"></param>
@@ -73,7 +96,7 @@ namespace PearlsDesign.ViewModels
         {
             Int32.TryParse(button.Uid, out int id);
             var pearl = PearlGrid.Pearls.Find(x => x.Id == id);
-            pearl.FillColor = ColorOne;
+            pearl.FillColor = ColorOne.Clone();
         }
 
         /// <summary>
@@ -84,7 +107,7 @@ namespace PearlsDesign.ViewModels
         {
             Int32.TryParse(button.Uid, out int id);
             var pearl = PearlGrid.Pearls.Find(x => x.Id == id);
-            pearl.FillColor = ColorTwo;
+            pearl.FillColor = ColorTwo.Clone();
         }
     }
 }

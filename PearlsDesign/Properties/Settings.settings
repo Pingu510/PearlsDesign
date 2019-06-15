@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PearlsDesign.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="GridSize" Type="System.Int32" Scope="User">
+    <Setting Name="GridWidthSize" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="PearlSize" Type="System.Double" Scope="User">
@@ -16,6 +16,9 @@
     </Setting>
     <Setting Name="ApplicationHeight" Type="System.Double" Scope="User">
       <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="GridHeightSize" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5</Value>
     </Setting>
   </Settings>
 </SettingsFile>
